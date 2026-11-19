@@ -63,9 +63,7 @@ LegacyXClient 是一款主要由ai生成、面向 Minecraft 1.8.9（Legacy Fabri
 - **更新检查**：对已装模组查询 Modrinth / CurseForge 的可用版本，单独检查 OptiFine 版本
 - **运行环境检测**：检查 Java 版本与 Legacy Fabric 版本是否合适，并给出提示
 
-### 多账号管理
-- **账号列表**：保存多个账号，点击即可切换，即时应用
-- **Microsoft 登录**：设备码流程，浏览器输码授权
+### 多账号类型登录
 - **Skin Site 登录**：填站点地址 + 账号密码获取正版档案
 - **AccessToken 导入**：直接粘贴令牌与可选 UUID
 - **离线账号**：按离线 UUID 规则生成档案
