@@ -1,5 +1,5 @@
 # Amethyst Client
-Amethyst Client 是面向 Minecraft 1.8.9（Legacy Fabric）的客户端增强模组。它在不改动原版玩法逻辑的前提下，提供 Material 3 风格的设置界面、PVP相关渲染与操作优化、多账号管理、高清字体与原版界面清理，并内置回放录制系统与移植版资源包浏览器。
+Amethyst Client 是由ai生成，面向 Minecraft 1.8.9（Legacy Fabric）的客户端增强模组。它在不改动原版玩法逻辑的前提下，提供 Material 3 风格的设置界面、PVP相关渲染与操作优化、多账号管理、高清字体与原版界面清理，并内置回放录制系统与移植版资源包浏览器。
 
 ## 快捷键
 | 按键 | 作用 |
