@@ -51,15 +51,16 @@ Amethyst Client 是由ai生成，面向 Minecraft 1.8.9（Legacy Fabric）的客
 - Java：Java 21 及以上，推荐 Java 25
 
 ## 第三方许可说明
-- FastPacks(McPacks)：MIT，内置本客户端，不独立发布；McPacks Team / Dulandor
-- JNA：BSD-3-Clause
-- Noto Sans / Noto Sans CJK：SIL OFL 1.1
-- Roboto / Material Icons：Apache-2.0
+- Blur（GUI背景模糊）：MIT，主页：https://github.com/tterrag1098/Blur
+- FastPacks(McPacks)：MIT，主页：https://modrinth.com/mod/fastpacks
+- JNA：BSD‑3‑Clause，主页：https://github.com/java-native-access/jna
+- Noto Sans / Noto Sans CJK：SIL OFL 1.1，主页：https://github.com/notofonts/noto-cjk
+- Roboto / Material Icons：Apache‑2.0，主页：https://github.com/googlefonts
 
 ## 旧版 Amethyst Client（指Releases中的LegacyXClient）曾使用组件
-> 以下组件仅存在旧测试版本，**Amethyst Client 1.1.0 不再包含，不再提供对应功能**：
-1. **JInput**：旧版用来实现 RawInput，现已移除，不再打包 JInput 二进制库。
-2. **Modern Font Pack**：旧版完整高清字体资源包，当前版本删除，仅保留构建期烘焙的界面位图图集，无字体切换开关。
+> 以下组件仅存在旧测试版本，**Amethyst Client 1.0.1 开始不再包含，不再提供对应功能**：
+1. **JInput**：旧版用来实现 RawInput，现已移除，不再打包 JInput 二进制库。主页：https://github.com/jinput/jinput
+2. **Modern Font Pack**：旧版完整高清字体资源包，当前版本删除，仅保留构建期烘焙的界面位图图集，无字体切换开关。主页：https://modrinth.com/resourcepack/modern-font-pack
 
 ## 说明
 本项目保留所有权利（All Rights Reserved），仅分发二进制 Jar，源码不公开。允许个人非商业使用，禁止二次分发、修改、逆向工程。
