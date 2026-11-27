@@ -1,0 +1,76 @@
+buildscript {
+    repositories {
+        maven { name = "Fabric"; url = "https://maven.fabricmc.net/" }
+        mavenCentral()
+    }
+    dependencies {
+        classpath "net.fabricmc:fabric-loom:1.8.13"
+    }
+}
+
+apply plugin: "fabric-loom"
+apply plugin: "java"
+
+// 编译期用的 X 端“空壳”：只为了让 mixin 注解处理器能在 classpath 上解析
+// net.client.ClientScreen 及其方法签名，不会打进最终 jar，也不参与运行。
+sourceSets {
+    xstub {
+        java.srcDir "src/xstub/java"
+    }
+}
+
+version = project.mod_version
+group = project.maven_group
+
+base {
+    archivesName = project.archives_base_name
+}
+
+repositories {
+    maven { name = "Legacy Fabric"; url = "https://maven.legacyfabric.net/" }
+    maven { name = "Fabric"; url = "https://maven.fabricmc.net/" }
+    mavenCentral()
+}
+
+loom {
+    mixin {
+        defaultRefmapName = "amethystesp.refmap.json"
+    }
+}
+
+dependencies {
+    minecraft "com.mojang:minecraft:${project.minecraft_version}"
+    mappings "net.legacyfabric:yarn:${project.yarn_mappings}:v2"
+    modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
+    compileOnly sourceSets.xstub.output
+}
+
+processResources {
+    inputs.property "version", project.version
+    filesMatching("fabric.mod.json") {
+        expand "version": project.version
+    }
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = "UTF-8"
+    // Amethyst Client 要求 Java 21+，这里也跟着出 Java 21 字节码
+    options.release = 21
+    // 去掉行号表、局部变量表、SourceFile 等调试信息，压 class 体积
+    options.debug = false
+    options.compilerArgs += ["-g:none"]
+}
+
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(21)
+    }
+}
+
+// Amethyst Client 1.1.0 起要求 Java 21+，客户端和模组同一个运行时
+tasks.named("runClient") {
+    javaLauncher = javaToolchains.launcherFor {
+        languageVersion = JavaLanguageVersion.of(21)
+    }
+}

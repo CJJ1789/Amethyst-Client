@@ -1,0 +1,17 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "net.amethystesp.mixin",
+  "compatibilityLevel": "JAVA_8",
+  "refmap": "amethystesp.refmap.json",
+  "client": [
+    "ClientTickMixin",
+    "ClientScreenMixin",
+    "WorldRendererMixin",
+    "LivingEntityRendererMixin",
+    "SettingsValuesMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "schemaVersion": 1,
+  "id": "amethystesp",
+  "version": "${version}",
+  "name": "Amethyst Client ESP Addon",
+  "description": "Add-on for Amethyst Client. Adds an \"ESP\" category to the client settings with through-wall overlays for entities, block entities, ores and beds (plus obsidian around beds), and optionally reveals invisible players.",
+  "authors": [
+    "Amethyst Client ESP Addon"
+  ],
+  "license": "LGPL-3.0-only",
+  "environment": "client",
+  "entrypoints": {
+    "client": [
+      "net.amethystesp.AmethystEspAddon"
+    ]
+  },
+  "mixins": [
+    {
+      "config": "amethystesp.mixins.json",
+      "environment": "client"
+    }
+  ],
+  "depends": {
+    "java": ">=21",
+    "fabricloader": ">=0.14.0",
+    "minecraft": "1.8.9",
+    "client": "*"
+  }
+}
