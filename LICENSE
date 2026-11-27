@@ -36,7 +36,7 @@ based on the Application, and not on the Linked Version.
 
   The "Corresponding Application Code" for a Combined Work means the
 object code and/or source code for the Application, including any data
-utility programs needed for reproducing the Combined Work from the
+and utility programs needed for reproducing the Combined Work from the
 Application, but excluding the System Libraries of the Combined Work.
 
   1. Exception to Section 3 of the GNU GPL.
@@ -64,8 +64,8 @@ version:
 
   The object code form of an Application may incorporate material from
 a header file that is part of the Library.  You may convey such object
-  code under terms of your choice, provided that, if the incorporated
-  material is not limited to numerical parameters, data structure
+code under terms of your choice, provided that, if the incorporated
+material is not limited to numerical parameters, data structure
 layouts and accessors, or small macros, inline functions and templates
 (ten or fewer lines in length), you do both of the following:
 
@@ -92,8 +92,8 @@ the following:
    document.
 
    c) For a Combined Work that displays copyright notices during
-execution, include the copyright notice for the Library among
-these notices, as well as a reference directing the user to the
+   execution, include the copyright notice for the Library among
+   these notices, as well as a reference directing the user to the
    copies of the GNU GPL and this license document.
 
    d) Do one of the following:
@@ -122,7 +122,8 @@ these notices, as well as a reference directing the user to the
    you use option 4d0, the Installation Information must accompany
    the Minimal Corresponding Source and Corresponding Application
    Code. If you use option 4d1, you must provide the Installation
-   Information in the manner specified by section 6 of the GNU GPL for conveying Corresponding Source.)
+   Information in the manner specified by section 6 of the GNU GPL
+   for conveying Corresponding Source.)
 
   5. Combined Libraries.
 
@@ -133,7 +134,8 @@ License, and convey such a combined library under terms of your
 choice, if you do both of the following:
 
    a) Accompany the combined library with a copy of the same work based
-   the Library, uncombined with any other library facilities, conveyed under the terms of this License.
+   on the Library, uncombined with any other library facilities,
+   conveyed under the terms of this License.
 
    b) Give prominent notice with the combined library that part of it
    is a work based on the Library, and explaining where to find the
@@ -149,9 +151,12 @@ differ in detail to address new problems or concerns.
   Each version is given a distinguishing version number. If the
 Library as you received it specifies that a certain numbered version
 of the GNU Lesser General Public License "or any later version"
-applies to it, you have the option of following the terms and conditions either of that published version or of any later version
-published by the Free Software Foundation. If the Library as you received it does not specify a version number of the GNU Lesser
-General Public License, you may choose any version of the GNU Lesser General Public License ever published by the Free Software Foundation.
+applies to it, you have the option of following the terms and
+conditions either of that published version or of any later version
+published by the Free Software Foundation. If the Library as you
+received it does not specify a version number of the GNU Lesser
+General Public License, you may choose any version of the GNU Lesser
+General Public License ever published by the Free Software Foundation.
 
   If the Library as you received it specifies that a proxy can decide
 whether future versions of the GNU Lesser General Public License shall
