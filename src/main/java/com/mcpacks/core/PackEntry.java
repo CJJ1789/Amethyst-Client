@@ -38,7 +38,7 @@ public class PackEntry {
          this.iconLoaded = true;
       } else {
          String rawName = file != null ? file.getName() : "";
-         this.name = type == PackType.PACK && rawName.toLowerCase(java.util.Locale.ROOT).endsWith(".zip") ? rawName.substring(0, rawName.length() - 4) : rawName;
+         this.name = type == PackType.PACK && rawName.toLowerCase().endsWith(".zip") ? rawName.substring(0, rawName.length() - 4) : rawName;
          this.relativePath = file != null && rootDir != null ? FolderUtils.getRelativePath(rootDir, file) : "";
       }
    }

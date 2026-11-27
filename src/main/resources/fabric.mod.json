@@ -1,0 +1,35 @@
+{
+  "schemaVersion": 1,
+  "id": "client",
+  "version": "${version}",
+  "name": "Amethyst Client",
+  "description": "Amethyst Client ${version} — a PVP enhancement client for Minecraft 1.8.9 on Legacy Fabric. Requires Java 21 or newer (Java 25 recommended).",
+  "authors": [
+    "Amethyst Client"
+  ],
+  "license": "LGPL-3.0-only",
+  "environment": "client",
+  "entrypoints": {
+    "client": [
+      "net.client.Client",
+      "com.mcpacks.McPacksMod",
+      "net.client.replay.ReplayClient",
+      "com.amethyst.blur.Blur"
+    ]
+  },
+  "mixins": [
+    "client.mixins.json",
+    "mcpacks.mixins.json",
+    "amethystblur.mixins.json"
+  ],
+  "depends": {
+    "java": ">=21",
+    "fabricloader": ">=0.12.0",
+    "minecraft": "1.8.9"
+  },
+  "icon": "assets/md3/icon.png",
+  "contact": {
+    "homepage": "https://github.com/CJJ1789/Amethyst-Client",
+    "issues": "https://github.com/CJJ1789/Amethyst-Client/issues"
+  }
+}
