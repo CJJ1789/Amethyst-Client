@@ -166,6 +166,6 @@ refmap 里确认生成了 `class_1635;method_5773(Lnet/minecraft/class_1699;DDDF
 
 **LGPL-3.0-only**（GNU Lesser General Public License v3.0）。
 
-- 完整条文见 `LICENSE`（LGPLv3，其中并入的 GPLv3 条文见 `LICENSE.GPL`）
-- 也随 jar 一起打包在 `LICENSE` / `LICENSE.GPL`
+- 完整条文见 `LICENSE`（LGPLv3）
+- 也随 jar 一起打包在 `LICENSE`
 - 修改后再分发请保留同样的许可与声明，并按 LGPL 提供对应源码
