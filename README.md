@@ -1,31 +1,66 @@
-# Amethyst Client 1.0.2 — 源码构建说明
+# Amethyst Client
+Amethyst Client 是由ai生成，面向 Minecraft 1.8.9（Legacy Fabric）的客户端增强模组。它在不改动原版玩法逻辑的前提下，提供 Material 3 风格的设置界面、PVP相关渲染与操作优化、多账号管理、高清字体与原版界面清理，并内置回放录制系统与移植版资源包浏览器。
 
-License: GNU Lesser General Public License v3.0 only (`LGPL-3.0-only`)，全文见 `LICENSE`；LGPLv3 引用的 GPLv3 全文见 `COPYING`。
+## 快捷键
+| 按键 | 作用 |
+| ---- | ---- |
+| Right Shift（右 Shift） | 游戏内打开/关闭客户端设置 |
+| Esc | 关闭设置界面、返回上一级 |
+| 鼠标滚轮 / 拖拽 | 设置列表滚动 |
+| 自由视角 | 按键可在设置中自行绑定 |
 
-## 环境
+## 功能列表
+### 界面与主题
+- Material 3风格设置界面：卡片式分组、开关、滑块、颜色块、动画过渡，支持亮色/暗色主题切换
+- 颜色选择器：预设色板 + HSV 拾色 + 透明度调节
+- 准星编辑器：16×16像素画布，左键涂色 / 右键擦除，自定义准星贴图
+- 原版界面美化接管：统一按钮与界面风格
 
-- JDK 21（构建产物的字节码固定为 Java 21；游戏端 `fabric.mod.json` 也声明 `java >= 21`）
-- Gradle 9.4.0（仓库内已带 wrapper，`./gradlew` 即可，无需本机装 Gradle）
-- 需要能访问 `maven.fabricmc.net` / `maven.central` / `libraries.minecraft.net`（首次构建要拉 Minecraft 1.8.9、Yarn、Loader）
+### 视角与相机
+- FOV 自定义：基础 FOV、疾跑、速度药水、缓慢、飞行、拉弓分别设定，可整体关闭动态 FOV
+- 自由视角：按住绑定键自由观察，松开回到原视角
+- 动态模糊：强度可调
+- 最小化视角摇晃：减弱走路时的镜头摆动
+- 无受伤镜头抖动：受击时不再抖动镜头
 
-```bash
-export JAVA_HOME=/path/to/jdk-21
-./gradlew build
-# 产物：build/libs/client-1.0.2.jar
-```
+### 渲染与颜色
+- 自定义附魔光效颜色（Glint）
+- 自定义雾：雾颜色、浓度，可让天空颜色跟随雾色
+- 方块高亮：填充色与描边色独立设置
+- 受击颜色自定义：可修改受伤时的屏幕红色
+- 伽马满亮度（Fullbright）
+- 火焰高度调整：降低第一人称火焰遮挡
+- 第一人称手部位置：前后 / 左右 / 上下三轴微调
+- 世界时间覆盖（仅视觉）：固定到指定时间点
+- 天气覆盖：跟随 / 晴 / 雨 / 雷暴 / 雪，可设置天气是否穿透屋顶
+- 界面渲染字体：使用构建期烘焙生成的 Noto 位图图集
+- 受击残影：颜色、持续时间、强度、层数可调，可选择是否显示自己的残影
 
-## libs/
+## 回放
+- F7：开始录制
+- F8：停止录制并保存回放文件
+- F9：打开回放播放器
+- 回放命令：`.replay`
 
-`build.gradle` 里的 `org.local:jna-win:5.17.0` 不是公共仓库坐标，对应 `libs/jna-win-5.17.0.jar`：
+## 资源包管理器
+内置 FastPacks 资源包浏览器，支持快速浏览、启用、排序资源包，仅为本客户端内置，不单独发布。
 
-- 来源：JNA 5.17.0（Apache-2.0 / LGPL 双许可，这里按 Apache-2.0 使用）；
-- 已裁剪：删除 `META-INF/*.SF|RSA|DSA` 与除 `win32-x86`、`win32-x86-64` 之外的全部原生库（JNA 5.17.0 上游本身也没有 Windows ARM64 产物），`.class` 未改动；
-- 仅用于 Windows 输入法修复（IMM32）。
+## 运行要求
+- Minecraft：1.8.9
+- 加载器：Legacy Fabric
+- Java：Java 21 及以上，推荐 Java 25
 
-发版时 `libs/` 必须随源码一起提供，否则依赖解析会直接失败。
+## 第三方许可说明
+- Blur（GUI背景模糊）：MIT，主页：https://github.com/tterrag1098/Blur
+- FastPacks(McPacks)：MIT，主页：https://modrinth.com/mod/fastpacks
+- JNA：BSD‑3‑Clause，主页：https://github.com/java-native-access/jna
+- Noto Sans / Noto Sans CJK：SIL OFL 1.1，主页：https://github.com/notofonts/noto-cjk
+- Roboto / Material Icons：Apache‑2.0，主页：https://github.com/googlefonts
 
-## 已知行为
+## 旧版 Amethyst Client（指Releases中的LegacyXClient）曾使用组件
+> 以下组件仅存在旧测试版本，**Amethyst Client 1.0.1 开始不再包含，不再提供对应功能**：
+1. **JInput**：旧版用来实现 RawInput，现已移除，不再打包 JInput 二进制库。主页：https://github.com/jinput/jinput
+2. **Modern Font Pack**：旧版完整高清字体资源包，当前版本删除，仅保留构建期烘焙的界面位图图集，无字体切换开关。主页：https://modrinth.com/resourcepack/modern-font-pack
 
-- **MJPEG AVI 上限 4 GB**：AVI 1.0 的 RIFF 长度与 `idx1` 偏移都是 32 位，超出就会写出无法完整播放的文件。1.0.2_18 起在逼近上限时主动失败并提示改用 ffmpeg，不再静默产出坏文件。
-- **攻击冷却**：`MinecraftClientMixin` 会清空原版点击冷却（1.0.2 起常开）。部分服务器 / 反作弊会把它判定为异常点击速率，联机前请确认目标服务器规则。
-- **账号文件**：`config/client-accounts.json` 保存 accessToken，1.0.2_18 起写入后会尝试收紧为 `600`（不支持 POSIX 的文件系统上跳过）。
+## 说明
+本项目与 Mojang、Microsoft 无关联，不属于官方产品。
