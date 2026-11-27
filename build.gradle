@@ -1,0 +1,82 @@
+buildscript {
+    repositories {
+        maven {
+            name = "Fabric"
+            url = "https://maven.fabricmc.net/"
+        }
+        mavenCentral()
+    }
+    dependencies {
+        classpath "net.fabricmc:fabric-loom:1.16.1"
+    }
+}
+
+apply plugin: "fabric-loom"
+apply plugin: "java"
+
+version = project.mod_version
+group = project.maven_group
+
+base {
+    archivesName = project.archives_base_name
+}
+
+repositories {
+    flatDir { dirs 'libs' }
+    maven { url = uri('libs-repo') }
+    mavenCentral()
+    maven {
+        name = "Fabric"
+        url = "https://maven.fabricmc.net/"
+    }
+    maven {
+        name = "LegacyFabric"
+        url = "https://maven.legacyfabric.net/"
+    }
+    maven {
+        name = "Mojang"
+        url = "https://libraries.minecraft.net/"
+    }
+}
+
+// 产物字节码固定为 Java 21：用 JDK 21 或 JDK 25 构建都得到同一个下限，
+// 玩家用 21 / 25 都能加载（fabric.mod.json 里声明了 java >=21）。
+tasks.withType(JavaCompile).configureEach {
+    options.release = 21
+    options.encoding = 'UTF-8'
+}
+
+
+dependencies {
+    minecraft "com.mojang:minecraft:${project.minecraft_version}"
+    mappings "net.legacyfabric:yarn:${project.yarn_version}:v2"
+    modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
+    // JNA 5.17.0（Apache-2.0 / LGPL 双许可，这里按 Apache-2.0 使用），只用于 Windows 中文输入法修复。
+    // 用 Loom 的 include 以嵌套 jar 形式放进模组，避免把 JNA 类和十几个平台的 jnidispatch 摊平进主 jar。
+    // 同上，但只随包分发 Windows 三个架构的 jnidispatch（其余平台的原生库已裁掉，
+    // 类文件未改动），嵌套 jar 从 2.0 MB 降到 0.5 MB。裁剪说明见 THIRD_PARTY.md。
+    implementation 'org.local:jna-win:5.17.0'
+    include 'org.local:jna-win:5.17.0'
+}
+
+processResources {
+    inputs.property "version", project.version
+    filesMatching("fabric.mod.json") {
+        expand "version": project.version
+    }
+}
+
+jar {
+    exclude 'META-INF/MANIFEST.MF', 'META-INF/*.SF', 'META-INF/*.RSA', 'META-INF/*.DSA'
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+}
+
+// 冒烟测试：Loom 1.16 重映射出的 MC 类是 Java 21 字节码，运行时最低 21。
+// 默认按 21 启动；要在首选运行时（Java 25）上验证，加 -PrunJava=25：
+//   ./gradlew runClient -PrunJava=25
+def runJavaVersion = (findProperty('runJava') ?: '21').toString()
+tasks.named('runClient') {
+    javaLauncher = javaToolchains.launcherFor {
+        languageVersion = JavaLanguageVersion.of(runJavaVersion)
+    }
+}
