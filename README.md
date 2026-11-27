@@ -63,5 +63,4 @@ Amethyst Client 是由ai生成，面向 Minecraft 1.8.9（Legacy Fabric）的客
 2. **Modern Font Pack**：旧版完整高清字体资源包，当前版本删除，仅保留构建期烘焙的界面位图图集，无字体切换开关。主页：https://modrinth.com/resourcepack/modern-font-pack
 
 ## 说明
-本项目保留所有权利（All Rights Reserved），仅分发二进制 Jar，源码不公开。允许个人非商业使用，禁止二次分发、修改、逆向工程。
 本项目与 Mojang、Microsoft 无关联，不属于官方产品。
