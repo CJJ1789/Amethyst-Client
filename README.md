@@ -53,7 +53,7 @@ Amethyst Client 是由ai生成，面向 Minecraft 1.8.9（Legacy Fabric）的客
 ## 第三方许可说明
 - Blur（GUI背景模糊）：MIT，主页：https://github.com/tterrag1098/Blur
 - FastPacks(McPacks)：MIT，主页：https://modrinth.com/mod/fastpacks
-- JNA：BSD‑3‑Clause，主页：https://github.com/java-native-access/jna
+- JNA：Apache-2.0 / LGPL-2.1-or-later 双许可（本项目按 Apache-2.0 使用），主页：https://github.com/java-native-access/jna
 - Noto Sans / Noto Sans CJK：SIL OFL 1.1，主页：https://github.com/notofonts/noto-cjk
 - Roboto / Material Icons：Apache‑2.0，主页：https://github.com/googlefonts
 
